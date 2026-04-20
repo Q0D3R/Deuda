@@ -1,0 +1,175 @@
+﻿/* Unique color variables for debt apps */
+:root {
+    --debt-red: #fa5252;
+    --collected-green: #40c057;
+    --pending-orange: #fab005;
+}
+
+@mixin flex-col ($align: center, $justify: space-between) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: column;
+}
+
+@mixin flex-row ($align: center, $justify: space-between) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: row;
+}
+
+@mixin glass {
+    backdrop-filter: blur(1.1px);
+    background: rgba(255, 255, 255, 0);
+    -webkit-backdrop-filter: blur(1.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container {
+    padding: 20px;
+    background-color: #f1f3f5;
+    min-height: 100vh;
+}
+
+/* Styling a specific icon */
+.icon {
+    font-size: 40px; /* Changes the icon size */
+    text-shadow: 2px 2px #ccc; /* Adds a shadow */
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Adds a more complex shadow */
+
+    &.red {
+        color: darkred; /* Changes the icon color */
+    }
+
+    &.green {
+        color: green; /* Changes the icon color */
+    }
+
+    &.yellow {
+        color: yellow; /* Changes the icon color */
+    }
+}
+
+.icon_img {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    width: 4rem;
+}
+
+.stat-card {
+    background: white;
+    border-left: 5px solid #dee2e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+
+    &.debt {
+        border-left-color: var(--debt-red);
+    }
+
+    &.collected {
+        border-left-color: var(--collected-green);
+    }
+
+    &.pending {
+        border-left-color: var(--pending-orange);
+    }
+
+    &.col-60 {
+        width: 60%;
+    }
+
+    &.col-40 {
+        width: 60%;
+    }
+
+
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 5px 0;
+}
+
+
+.stat-body {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+
+
+/* Search Box Styling */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    i {
+        position: absolute;
+        left: 15px;
+        color: #adb5bd;
+    }
+}
+
+.search-input {
+    padding-left: 2.5rem !important;
+    height: 50px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+/* Status Pills */
+.status-pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &.overdue {
+        background: #fff5f5;
+        color: #ff6b6b;
+    }
+}
+
+/* CSS Circular Progress */
+.circular-progress {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: conic-gradient(#40c057 calc(var(--percent) * 1%), #e9ecef 0);
+    display: grid;
+    place-items: center;
+
+    &::before {
+        content: "";
+        width: 45px;
+        height: 45px;
+        background: white;
+        border-radius: 50%;
+    }
+}
+
+.btn-icon {
+    border: none;
+    background: #f1f3f5;
+    color: #495057;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    margin-left: 5px;
+    transition: 0.2s;
+
+    &:hover {
+        background: #e7f5ff;
+        color: #228be6;
+    }
+}
+

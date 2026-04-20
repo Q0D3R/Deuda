@@ -1,0 +1,155 @@
+﻿// Variables
+$brand-primary: #512BD4;
+$touch-target-size: 48px;
+
+// Mixin for touch feedback
+@mixin mobile-tap {
+    &:active {
+        transform: scale(0.97);
+        filter: brightness(90%);
+    }
+}
+
+.btn-tab {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    color: #adb5bd;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+
+    &.active {
+        color: #228be6;
+        border-bottom: 2px solid #228be6;
+    }
+}    
+
+a {
+    color: #228be6;
+    text-decoration: none;
+    font-size: 0.9rem;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* Button styling */
+.btn-deuda {
+    background-color: $brand-primary;
+    min-height: $touch-target-size;
+    color: white;
+    border-radius: 12px;
+    padding: 10px 20px;
+    border: none;
+    transition: transform 0.1s ease, background 0.2s;
+    @include mobile-tap; // Apply the touch feedback
+
+    &:hover {
+        background: #1c7ed6;
+        transform: translateY(-2px);
+    }
+}
+
+/* Container styling */
+.customer-form-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Label improvements */
+label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 0.4rem;
+    display: block;
+}
+
+/* Unified input styling (Fixes the date/select height issue) */
+.form-control, select, input[type="date"] {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: 1.5px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+
+    &:focus {
+        background-color: #fff;
+        border-color: #4dabf7;
+        box-shadow: 0 0 0 4px rgba(77, 171, 247, 0.1);
+        outline: none;
+    }
+}
+
+/* Styling the ID display */
+.id-display {
+    background: #e7f5ff;
+    color: #1971c2;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.notification-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #40c057; /* Success Green */
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+  
+
+
+.row {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-items: center;
+    margin: -10px; // Adjust for padding
+    padding: 10px 5px;
+    width: 100%;
+}
+
+.col {
+    flex: 1;
+    padding: 10px; // Adjust for spacing
+    width: 100%;
+
+    .col-6 {
+        flex: 0 0 50%;
+    }
+
+    .col-12 {
+        flex: 0 0 100%;
+    }
+}
+
+body {
+}

@@ -49,19 +49,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!-- App Icon -->      
-        <MauiIcon Include="Resources\Splash\splash_logo.svg">
-          <Color>#512BD4</Color>
-          <ForegroundFile>Resources\AppIcon\bg.png</ForegroundFile>
-        </MauiIcon>
+        <!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\app_icon.svg" Link="Resources\AppIcon\app_icon.svg" Color="#FFFFFF" />
 
-        <!-- Splash Screen -->
+
+		<!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\Splash\splash_logo.svg" Color="#512BD4" BaseSize="128,128" />
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
-        <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
-
+        
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
 
@@ -70,9 +67,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+        <PackageReference Include="DartSassBuilder" Version="1.1.0" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.51" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="10.0.51" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RazorClassLibrary\RazorClassLibrary.csproj" />
     </ItemGroup>
 
 </Project>

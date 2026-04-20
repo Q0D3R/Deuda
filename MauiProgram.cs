@@ -16,8 +16,14 @@ namespace Deuda
 
             builder.Services.AddMauiBlazorWebView();
 
+#if WINDOWS
+    // Use the bool overload only for Windows if needed
+    // Otherwise, sticking to the parameterless CreateBuilder() is safer cross-platform
+    builder = MauiApp.CreateBuilder(true); 
+#endif
+
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
 

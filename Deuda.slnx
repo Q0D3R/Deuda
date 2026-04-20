@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="Deuda.csproj" />
+  <Project Path="../RazorClassLibrary/RazorClassLibrary.csproj" Id="e2e35781-a025-4b6a-ac58-45e74c712856" />
+  <Project Path="Deuda.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>
