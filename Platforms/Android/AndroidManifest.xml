@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.companyname.deuda"> <!-- 1. Ensure this matches your project ID -->
+	
 	<application
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"

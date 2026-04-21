@@ -1,4 +1,6 @@
-﻿/* Unique color variables for debt apps */
+﻿@use 'mixins' as *; // Dart Sass automatically looks for _mixins.scss
+
+/* Unique color variables for debt apps */
 :root {
     --debt-red: #fa5252;
     --collected-green: #40c057;
@@ -52,7 +54,7 @@
     }
 }
 
-.icon_img {
+.icon-img {
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     width: 4rem;

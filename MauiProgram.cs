@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using RazorClassLibrary.ViewModels; // Add your namespace
 
 namespace Deuda
 {
@@ -15,6 +16,9 @@ namespace Deuda
                 });
 
             builder.Services.AddMauiBlazorWebView();
+
+            // Registering as Transient creates a new instance every time a component is loaded
+            builder.Services.AddTransient<UserViewModel>();
 
 #if WINDOWS
     // Use the bool overload only for Windows if needed

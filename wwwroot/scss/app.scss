@@ -10,6 +10,28 @@ $touch-target-size: 48px;
     }
 }
 
+@mixin flex-col ($align: center, $justify: space-between) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: column;
+}
+
+@mixin flex-row ($align: center, $justify: space-between) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: row;
+}
+
+@mixin glass {
+    backdrop-filter: blur(1.1px);
+    background: rgba(255, 255, 255, 0);
+    -webkit-backdrop-filter: blur(1.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
 .btn-tab {
     background: none;
     border: none;
@@ -121,35 +143,4 @@ label {
         transform: translateX(0);
         opacity: 1;
     }
-}
-
-
-  
-
-
-.row {
-    display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    justify-items: center;
-    margin: -10px; // Adjust for padding
-    padding: 10px 5px;
-    width: 100%;
-}
-
-.col {
-    flex: 1;
-    padding: 10px; // Adjust for spacing
-    width: 100%;
-
-    .col-6 {
-        flex: 0 0 50%;
-    }
-
-    .col-12 {
-        flex: 0 0 100%;
-    }
-}
-
-body {
 }

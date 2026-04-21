@@ -1,0 +1,222 @@
+﻿@use 'mixins' as *; // Dart Sass automatically looks for _mixins.scss
+
+$dark-link: #00bfff;
+$dark-bg0: #1a1a1a;
+$dark-bg1: #333;
+$dark_bg2: #00bfff; 
+
+$dark-bd0: #333;
+
+$dark-txt0: #fff;
+$dark-txt1: #00bfff;
+
+
+@mixin flex-col ($align: center, $justify: space-between) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: column;
+}
+
+@mixin flex-row ($align: center, $justify: space-between) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: row;
+}
+
+/* Container styling */
+.form-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.card {
+    @include flex-col(center, flex-start);
+    border-radius: 20px;
+    padding: 5px;
+
+    .card-header {
+        @include flex-row(center, flex-start);
+        border-radius: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-body {
+        @include flex-row(center, flex-start);
+        font-size: 1rem;
+        color: #333;
+
+        .card-col {
+            @include flex-col(center, flex-start);
+            margin-bottom: 5px;
+        }
+
+        .card-row {
+            @include flex-row(center, flex-start);
+            margin-bottom: 5px;
+        }
+    }
+
+    .card-footer {
+        @include flex-row(center, flex-start);
+        font-size: 1rem;
+        color: #333;
+    }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+
+
+
+.flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+}
+
+/* Form Styling */
+.form {
+    background-color: $dark-bg0;
+    border: 1px solid $dark-bd0;
+    border-radius: 20px;
+    color: $dark-txt0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px;
+    padding: 20px;
+    position: relative;
+
+    label {
+        position: relative;
+        width: 100%;
+
+        .input {
+            background-color: $dark-bg1;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+            color: $dark-txt0;
+            outline: 0;
+            padding: 20px 05px 05px 10px;
+            width: 100%;
+
+            &:placeholder-shown + span {
+                top: 12.5px;
+                font-size: 0.9em;
+            }
+
+            &:focus + span, &:valid + span {
+                color: #00bfff;
+                top: 0px;
+                font-size: 0.7em;
+                font-weight: 600;
+            }
+        }
+
+            .input + span {
+                color: rgba(255, 255, 255, 0.5);
+                cursor: text;
+                font-size: 0.9em;
+                left: 10px;
+                position: absolute;
+                top: 0px;
+                transition: 0.3s ease;
+            }
+    }
+
+    .input {
+        font-size: medium;
+    }
+}
+
+.title {
+    color: $dark-txt1;
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    justify-content: center;
+    position: relative;
+    padding-left: 30px;
+
+    &::before {
+        aspect-ratio: 1 / 1;
+        width: 18px;
+    }
+
+    &::after {
+        animation: pulse 1s linear infinite;
+        aspect-ratio: 1 / 1;
+        width: 18px;
+    }
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        left: 0px;
+        background-color: #00bfff;
+    }
+}
+
+.signin {
+    text-align: center;
+
+    a {
+        color: #00bfff;
+
+        &:hover {
+            text-decoration: underline royalblue;
+        }
+    }
+}
+
+.message,
+.signin {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.submit {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+    background-color: #00bfff;
+
+    &:hover {
+        background-color: #00bfff96;
+    }
+}    
+
+@keyframes pulse {
+    from {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}

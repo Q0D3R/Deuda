@@ -52,7 +52,6 @@
         <!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\app_icon.svg" Link="Resources\AppIcon\app_icon.svg" Color="#FFFFFF" />
 
-
 		<!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\Splash\splash_logo.svg" Color="#512BD4" BaseSize="128,128" />
 
