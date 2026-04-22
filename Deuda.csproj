@@ -50,7 +50,7 @@
 
     <ItemGroup>
         <!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\app_icon.svg" Link="Resources\AppIcon\app_icon.svg" Color="#FFFFFF" />
+		<MauiIcon Include="Resources\AppIcon\app_icon.svg" Link="Resources\AppIcon\app_icon.svg" Color="#FFFFFFFF" />
 
 		<!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\Splash\splash_logo.svg" Color="#512BD4" BaseSize="128,128" />
@@ -66,10 +66,11 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Agents.SDK.Providers.Antigravity" Version="0.1.0" />
         <PackageReference Include="DartSassBuilder" Version="1.1.0" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.51" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="10.0.51" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.6" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.7" />
     </ItemGroup>
 
     <ItemGroup>

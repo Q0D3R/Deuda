@@ -1,6 +1,52 @@
-html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+html, body {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #f4f7f6;
+}
+
+/* Dashboard Layout */
+.app-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr; /* Sidebar and Content */
+    min-height: 100vh;
+}
+
+.sidebar {
+    background: #1a1a1a;
+    color: white;
+    padding: 2rem;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+/* Custom Card (instead of .card) */
+.custom-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+
+
+
+
+
+
 
 a, .btn-link {
     color: #006bb7;

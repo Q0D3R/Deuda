@@ -1,6 +1,11 @@
 ﻿// Variables
+$primary-blue: #2563eb;
+$bg-gray: #f8fafc;
+
 $brand-primary: #512BD4;
 $touch-target-size: 48px;
+$text-dark: #1e293b;
+$text-muted: #64748b;
 
 // Mixin for touch feedback
 @mixin mobile-tap {
@@ -31,6 +36,91 @@ $touch-target-size: 48px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
+
+/* Status Dot */
+.status-indicator {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: inline-block;
+    align-items: center;
+    margin-right: 8px;
+    white-space: nowrap;
+    width: 10px;
+
+    &.online {
+        background-color: #40c057;
+        box-shadow: 0 0 8px #40c057;
+        animation: pulse-green 2s infinite;
+    }
+
+    &.offline {
+        background-color: #fa5252;
+    }
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(64, 192, 87, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(64, 192, 87, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(64, 192, 87, 0);
+    }
+}
+
+
+.footer {
+    border-top: 1px solid #e2e8f0;
+    bottom: 0;
+    background: white;
+    display: flex;
+    align-items: center;
+    height: 6.5rem;
+    justify-content: space-around;
+    padding-bottom: env(safe-area-inset-bottom);
+    position: fixed;
+    width: 100%;
+}
+
+.nav-item {
+    color: $text-muted;
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Centers children horizontally (cross-axis)
+    justify-content: center; // Centers children vertically (main-axis)
+    text-align: center; // Centers inline content
+    font-size: 0.6875rem; // 11px
+    text-decoration: none;
+
+    &.active {
+        color: $primary-blue;
+        font-weight: 600;
+    }
+
+    .nav-icon, .nav-txt {
+        display: flex; // Changed to flex to center content inside the icon/text boxes
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1 / 1;
+        width: 1.25rem; // 20px
+        margin-bottom: 0.125rem; // 2px
+    }
+
+    .nav-icon {
+        font-size: 1.25rem; // 20px
+    }
+
+    .nav-txt {
+        font-size: 0.3125rem; // 5px
+    }
+}
+
+
+
 
 .btn-tab {
     background: none;
