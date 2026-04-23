@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components; // For the [Inject] attribute
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.IO;
@@ -13,6 +13,10 @@ namespace Deuda.Components.Layout
         private bool IsSyncing = false;
 
         private DateTime LastSynced = DateTime.Now;
+
+        [Inject]
+        public IJSRuntime JS { get; set; } = default!;
+
         private string? AppVersion;
         private string? BuildDate;
 
@@ -42,6 +46,14 @@ namespace Deuda.Components.Layout
             IsOnline = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
         }
 
+        public async Task ToggleTheme()
+        {
+            // Update MAUI Native Shell
+            Application.Current.UserAppTheme = AppTheme.Dark;
+            // Update Blazor WebView
+            await JS.InvokeVoidAsync("setTheme", true);
+        }
+
         // You can call this when refreshing your Debt List
         public async Task TriggerSync()
         {
@@ -65,6 +77,8 @@ namespace Deuda.Components.Layout
         {
             // Always unsubscribe to prevent memory leaks
             Application.Current.RequestedThemeChanged -= OnThemeChanged;
+
+            GC.SuppressFinalize(this);
         }
     }
 }

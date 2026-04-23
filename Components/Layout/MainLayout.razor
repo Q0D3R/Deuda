@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="row">
-                        <button class="btn " @onclick="SetMode" disabled="@(!IsOnline || IsSyncing)">
+                        <button class="btn " @onclick="ToggleTheme" disabled="@(!IsOnline || IsSyncing)">
                             <i class="bi bi-arrow-repeat @(IsSyncing ? "spin" : "")"></i>
                         </button>  
                     </div>
@@ -61,23 +61,23 @@
         </footer>
         <nav class="footer">
             <a href="#" class="nav-item">
-                <img alt="Home" class="nav-icon" src="@(isDark ? "images/home_dark.png" : "images/home_light.png")" />
+                <img alt="Home" class="nav-icon" src="@(IsDark ? "images/home_dark.png" : "images/home_light.png")" />
                 <span class="nav-txt">Home</span>
             </a>
             <a href="#" class="nav-item">
-                <img alt="Support" class="nav-icon" src="@(isDark ? "images/setting_dark.png" : "images/setting_light.png")" />
-                <span class="nav-txt">Accounts</span>
+                <img alt="Payments" class="nav-icon" src="@(IsDark ? "images/payment_dark.png" : "images/payment_light.png")" />
+                <span class="nav-txt">Payments</span>
             </a>
             <a href="#" class="nav-item active">
-                <img alt="Add" class="nav-icon" src="@(isDark ? "images/add_dark.png" : "images/add_light.png")" />
+                <img alt="Add" class="nav-icon" src="@(IsDark ? "images/add_dark.png" : "images/add_light.png")" />
                 <span class="nav-txt">Add</span>
             </a>
             <a href="#" class="nav-item">
-                <img alt="Payments" class="nav-icon" src="@(isDark ? "images/payments_dark.png" : "images/payments_light.png")" />
-                <span class="nav-txt">Payments</span>
+                <img alt="Support" class="nav-icon" src="@(IsDark ? "images/settings_dark.png" : "images/settings_light.png")" />
+                <span class="nav-txt">Accounts</span>
             </a>
             <a href="#" class="nav-item">
-                <img alt="Support" class="nav-icon" src="@(isDark ? "images/support_dark.png" : "images/support_light.png")" />
+                <img alt="Support" class="nav-icon" src="@(IsDark ? "images/support_dark.png" : "images/support_light.png")" />
                 <span class="nav-txt">Support</span>
             </a>
         </nav>
