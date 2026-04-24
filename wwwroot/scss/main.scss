@@ -1,91 +1,18 @@
-﻿// Variables
-// Dark Mode Colors
-$dark_bg0: #010104;
-$dark_bg1: #83808c;
-
-//Blue Shades
-$dark_blue0: #151538;
-$dark_blue1: #2c2e6e;
-$dark_blue2: #3b41bf;
-
-// Text Colors
-$dark_text0: #ffffff;
-$dark_text1: #f2eafd;
-$dark_text2: #83808c;   
-$dark_text3: #b0b0b0;
-
-$light_bg0: #fdfdfe;
-$light_bg1: #f5f5f6;
-
-//Gray Shades
-$light_gray0: #a9a9a9;
-$light_gray1: #cccdcd;
-$light_gray2: #e2e3e3;
-
-// Text Colors
-$light_text0: #37659c;
-$light_text1: #a9a9a9;
-$light_text2: #cccdcd;
-$light_text3: #b7becc;
-
-$primary-blue: #2563eb;
-$bg-gray: #f8fafc;
-
-$brand-primary: #512BD4;
-$touch-target-size: 48px;
-$text-dark: #1e293b;
-$text-muted: #64748b;
-
-// Mixin for touch feedback
-@mixin mobile-tap {
-    &:active {
-        transform: scale(0.97);
-        filter: brightness(90%);
-    }
-}
-
-@mixin flex-col ($align: center, $justify: space-between) {
-    display: flex;
-    align-items: $align;
-    justify-content: $justify;
-    flex-direction: column;
-}
-
-@mixin flex-row ($align: center, $justify: space-between) {
-    display: flex;
-    align-items: $align;
-    justify-content: $justify;
-    flex-direction: row;
-}
-
-/* Container styling */
-@mixin customer-form-card($max-width: 800px) {
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    max-width: $max-width;
-    margin: 20px auto;
-    padding: 2rem;
-}
-
-@mixin glass {
-    backdrop-filter: blur(1.1px);
-    background: rgba(255, 255, 255, 0);
-    -webkit-backdrop-filter: blur(1.1px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
+﻿@import 'variables';
+@import 'mixins';
 
 @media (prefers-color-scheme: light) {
 
     body {
-        background-color: $light_bg0;
-        color: $light_text0;
+        background-color: $light-bg0;
+        color: $light-text0;
+        overflow-x: scroll;
     }
 
     .footer {
-        border-top: 1px solid #e2e8f0;
+        border-top: 1px solid $light-bd1;
         bottom: 0;
-        background: $light_bg0;
+        background: $light-bg0;
         display: flex;
         align-items: center;
         height: 6.5rem;
@@ -99,14 +26,14 @@ $text-muted: #64748b;
 @media (prefers-color-scheme: dark) {
 
     body {
-        background-color: $dark_bg0;
-        color: $dark_text0;
+        background-color: $dark-bg0;
+        color: $dark-text0;
     }
 
     .footer {
         border-top: 1px solid #e2e8f0;
         bottom: 0;
-        background: $dark_bg0;
+        background: $dark-bg0;
         display: flex;
         align-items: center;
         height: 6.5rem;
@@ -117,197 +44,3 @@ $text-muted: #64748b;
     }
 }
 
-/* Status Dot */
-.status-indicator {
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    display: inline-block;
-    align-items: center;
-    margin-right: 8px;
-    white-space: nowrap;
-    width: 10px;
-
-    &.online {
-        background-color: #40c057;
-        box-shadow: 0 0 8px #40c057;
-        animation: pulse-green 2s infinite;
-    }
-
-    &.offline {
-        background-color: #fa5252;
-    }
-}
-
-@keyframes pulse-green {
-    0% {
-        box-shadow: 0 0 0 0 rgba(64, 192, 87, 0.7);
-    }
-
-    70% {
-        box-shadow: 0 0 0 10px rgba(64, 192, 87, 0);
-    }
-
-    100% {
-        box-shadow: 0 0 0 0 rgba(64, 192, 87, 0);
-    }
-}
-
-
-
-
-.nav-item {
-    //color: $light_text0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; // Centers children horizontally (cross-axis)
-    justify-content: center; // Centers children vertically (main-axis)
-    text-align: center; // Centers inline content
-    font-size: 0.6875rem; // 11px
-    text-decoration: none;
-
-    .dark-mode & {
-        //color: $dark_text0;
-    }
-
-    &.active {
-        color: $light_text0;
-        font-weight: 600;
-
-        .dark-mode & {
-            color: $dark_text0;
-        }
-    }
-
-    .nav-icon, .nav-txt {
-        aspect-ratio: 1 / 1;
-        display: flex; // Changed to flex to center content inside the icon/text boxes
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 0.125rem; // 2px
-        width: 1.25rem; // 20px
-    }
-
-    .nav-icon {
-        font-size: 1.5rem; // 20px
-    }
-
-    .nav-txt {
-        color: $light_text0;
-        font-size: 0.3125rem; // 5px
-
-        .dark-mode & {
-            color: $dark_text0;
-        }
-    }
-}
-
-
-
-
-    .btn-tab {
-        background: none;
-        border: none;
-        padding: 10px 20px;
-        font-weight: 600;
-        color: #adb5bd;
-        border-bottom: 2px solid transparent;
-        transition: 0.3s;
-
-        &.active {
-            color: #228be6;
-            border-bottom: 2px solid #228be6;
-        }
-    }
-
-    a {
-        color: #228be6;
-        text-decoration: none;
-        font-size: 0.9rem;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-    /* Button styling */
-    .btn-deuda {
-        background-color: $brand-primary;
-        min-height: $touch-target-size;
-        color: white;
-        border-radius: 12px;
-        padding: 10px 20px;
-        border: none;
-        transition: transform 0.1s ease, background 0.2s;
-        @include mobile-tap; // Apply the touch feedback
-
-        &:hover {
-            background: #1c7ed6;
-            transform: translateY(-2px);
-        }
-    }
-    /* Container styling */
-    .customer-form-card {
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        max-width: 800px;
-        margin: 20px auto;
-    }
-    /* Label improvements */
-    label {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #6c757d;
-        margin-bottom: 0.4rem;
-        display: block;
-    }
-    /* Unified input styling (Fixes the date/select height issue) */
-    .form-control, select, input[type="date"] {
-        width: 100%;
-        padding: 0.6rem 1rem;
-        border: 1.5px solid #e9ecef;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        background-color: #f8f9fa;
-
-        &:focus {
-            background-color: #fff;
-            border-color: #4dabf7;
-            box-shadow: 0 0 0 4px rgba(77, 171, 247, 0.1);
-            outline: none;
-        }
-    }
-    /* Styling the ID display */
-    .id-display {
-        background: #e7f5ff;
-        color: #1971c2;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        font-family: monospace;
-        font-weight: bold;
-    }
-
-    .notification-toast {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #40c057; /* Success Green */
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 12px;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        z-index: 1000;
-        animation: slideIn 0.5s ease-out;
-    }
-
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }

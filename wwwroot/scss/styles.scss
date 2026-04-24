@@ -1,0 +1,228 @@
+﻿@import 'variables';
+@import 'mixins';
+
+.col {
+    @include flex-col(center, center);
+    //padding: 20px;
+}
+
+.input {
+    // ... base styles ...
+
+    &.is-valid {
+        border-color: $color-success !important;
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba($color-success, 0.2);
+        }
+    }
+
+    &.is-warning {
+        border-color: $color-warning !important;
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba($color-warning, 0.2);
+        }
+    }
+
+    &.is-invalid {
+        border-color: $color-error !important;
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba($color-error, 0.2);
+        }
+    }
+}
+
+
+.row {
+    @include flex-row(center, center);
+    padding-bottom: 10px;
+}
+
+
+/* Status Dot */
+.nav-item {
+    //color: $light_text0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Centers children horizontally (cross-axis)
+    justify-content: center; // Centers children vertically (main-axis)
+    text-align: center; // Centers inline content
+    font-size: 0.6875rem; // 11px
+    text-decoration: none;
+
+    .dark-mode & {
+        //color: $dark_text0;
+    }
+
+    &.active {
+        color: $light-text0;
+        font-weight: 600;
+
+        .dark-mode & {
+            color: $dark-text0;
+        }
+    }
+
+    .nav-icon, .nav-txt {
+        aspect-ratio: 1 / 1;
+        display: flex; // Changed to flex to center content inside the icon/text boxes
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.125rem; // 2px
+        width: 1.25rem; // 20px
+    }
+
+    .nav-icon {
+        font-size: 1.5rem; // 20px
+    }
+
+    .nav-txt {
+        color: $light-text0;
+        font-size: 0.5rem; // 5px
+
+        .dark-mode & {
+            color: $dark-text0;
+        }
+    }
+}
+
+
+.nav-link {
+    color: $light-text1;
+    transition: all 0.2s ease;
+
+    &.active {
+        color: $light-accent0;
+        background: rgba($light-accent0, 0.1);
+    }
+
+    @include dark-mode {
+        color: $dark-text1;
+
+        &.active {
+            color: $dark-accent0;
+            background: rgba($dark-accent0, 0.2);
+        }
+    }
+}
+
+.search-input {
+    background: $light-bg0;
+    border: 1px solid $light-bd0;
+    color: $light-text0;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+
+    @include dark-mode {
+        background: $dark-bg0;
+        border-color: $dark-bd0;
+        color: $dark-text0;
+    }
+
+    &:focus {
+        border-color: $light-accent0;
+        outline: none;
+    }
+}
+
+.status-indicator {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: inline-block;
+    align-items: center;
+    margin-right: 8px;
+    white-space: nowrap;
+    width: 10px;
+
+    &.online {
+        background-color: #40c057;
+        box-shadow: 0 0 8px #40c057;
+        animation: pulse-green 2s infinite;
+    }
+
+    &.offline {
+        background-color: #fa5252;
+    }
+}
+
+.status-msg {
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--success {
+        background: rgba($color-success, 0.1);
+        border-color: rgba($color-success, 0.2);
+        color: darken($color-success, 15%);
+
+        @include dark-mode {
+            color: $color-success;
+            background: rgba($color-success, 0.05);
+        }
+    }
+
+    &--warning {
+        background: rgba($color-warning, 0.1);
+        border-color: rgba($color-warning, 0.2);
+        color: darken($color-warning, 20%);
+
+        @include dark-mode {
+            color: $color-warning;
+        }
+    }
+
+    &--danger {
+        background: rgba($color-error, 0.1);
+        border-color: rgba($color-error, 0.2);
+        color: $color-error;
+    }
+}
+
+
+.text-muted {
+    color: $light-text1;
+
+    //@include dark-mode {
+    //    color: $dark-text1;
+    //}
+}
+
+.text-main {
+    color: $light-text0;
+
+    @include dark-mode {
+        color: $dark-text0;
+    }
+}
+
+.tooltip {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    @include dark-mode {
+        background: $dark-bg4;
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5); // Heavier shadow for depth
+    }
+}
+
+@keyframes pulse-green {
+    0% {
+        @include box-shadow(0 0 0 0 rgba(64, 192, 87, 0.7));
+    }
+
+    70% {
+        @include box-shadow(0 0 0 10px rgba(64, 192, 87, 0));
+    }
+
+    100% {
+        @include box-shadow(0 0 0 0 rgba(64, 192, 87, 0));
+    }
+}

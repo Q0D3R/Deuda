@@ -20,17 +20,19 @@ namespace Deuda.Components.Layout
         private string? AppVersion;
         private string? BuildDate;
 
-        [RequiresAssemblyFiles()]
+
         protected override void OnInitialized()
         {
+            base.OnInitialized();
+
             // Use this instead of Assembly.Location
             var path = AppContext.BaseDirectory;
 
             // Detect system theme
-            IsDark = Application.Current.RequestedTheme == AppTheme.Dark;
+            IsDark = Application.Current?.RequestedTheme is AppTheme.Dark;
 
             // Subscribe to the global system event
-            Application.Current.RequestedThemeChanged += OnThemeChanged;
+            Application.Current?.RequestedThemeChanged += OnThemeChanged;
 
             // Get Version
             var assembly = Assembly.GetExecutingAssembly();
@@ -49,9 +51,9 @@ namespace Deuda.Components.Layout
         public async Task ToggleTheme()
         {
             // Update MAUI Native Shell
-            Application.Current.UserAppTheme = AppTheme.Dark;
+            Application.Current?.UserAppTheme = IsDark ? AppTheme.Dark : AppTheme.Light;
             // Update Blazor WebView
-            await JS.InvokeVoidAsync("setTheme", true);
+            await JS.InvokeVoidAsync("setTheme", IsDark);
         }
 
         // You can call this when refreshing your Debt List
@@ -76,7 +78,7 @@ namespace Deuda.Components.Layout
         public void Dispose()
         {
             // Always unsubscribe to prevent memory leaks
-            Application.Current.RequestedThemeChanged -= OnThemeChanged;
+            Application.Current?.RequestedThemeChanged -= OnThemeChanged;
 
             GC.SuppressFinalize(this);
         }

@@ -1,8 +1,4 @@
-$mobile: 576px;
-$tablet: 768px;
-$desktop: 992px;
-$large-desktop: 1200px;
-$extra-large-desktop: 1400px;
+@import 'variables';
 
 @mixin breakpoint($size) {
     @if $size ==mobile {
@@ -36,6 +32,18 @@ $extra-large-desktop: 1400px;
     }
 }
 
+@mixin dark-mode {
+    body.dark-mode & {
+        @content;
+    }
+}
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
 @mixin flex-col ($align: center, $justify: space-between) {
     display: flex;
     align-items: $align;
@@ -57,3 +65,60 @@ $extra-large-desktop: 1400px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
+
+// Mixin for touch feedback
+@mixin mobile-tap {
+    &:active {
+        transform: scale(0.97);
+        filter: brightness(90%);
+    }
+}
+
+@mixin glass-card($bg: $dark-bg2, $border: $light-bd0, $accent: $dark-bg4) {
+    @include flex-col(center, space-between);
+    // Structure
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 20px auto;
+    // The "Cool" Factor: Glassmorphism & Depth
+    background: linear-gradient(135deg, lighten($bg, 2%) 0%, $bg 100%);
+    border: 1px solid $border;
+    backdrop-filter: blur(10px);
+    // Shadow with a hint of the accent color
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 1px rgba($accent, 0.1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+
+    @include dark-mode {
+        background: linear-gradient(135deg, darken($bg, 2%) 0%, $bg 100%);
+        border: 1px solid $border;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 1px rgba($accent, 0.1);
+    }
+    // Subtle interactive glow
+    &:hover {
+        border-color: rgba($accent, 0.5);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 15px rgba($accent, 0.2);
+        transform: translateY(-5px);
+
+        @include dark-mode {
+            border-color: rgba($accent, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 15px rgba($accent, 0.2);
+        }
+        // Optional: Top-edge highlight
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, $accent, transparent);
+
+            @include dark-mode {
+                background: linear-gradient(90deg, transparent, $accent, transparent);
+            }
+        }
+    }
+}
+

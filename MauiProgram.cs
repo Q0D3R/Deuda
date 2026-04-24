@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Android.Telephony.Data;
+using Microsoft.Extensions.Logging;
 using RazorClassLibrary.ViewModels; // Add your namespace
 
 namespace Deuda
@@ -19,6 +20,9 @@ namespace Deuda
 
             // Registering as Transient creates a new instance every time a component is loaded
             builder.Services.AddTransient<UserViewModel>();
+            // Register as a Singleton so the state is shared app-wide
+            builder.Services.AddSingleton<Settings>();
+
 
 #if WINDOWS
     // Use the bool overload only for Windows if needed

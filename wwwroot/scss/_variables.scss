@@ -1,0 +1,103 @@
+﻿// Dark Mode Colors
+
+// Accent Colors
+$dark-accent0: #00bfff; // Bright cyan
+$dark-accent-hover: darken($dark-accent0, 10%);
+
+// Border Colors
+$dark-bd0: #fff;
+$dark-bd1: #2d2d30; // Subtle borders for cards on $dark-bg2
+$dark-bd2: #44444a; // Visible separators
+
+// Dark Mode Colors
+$dark-bg0: #010104;
+$dark-bg1: #1a1a1a;
+$dark-bg2: #83808c;
+$dark-bg3: #333;
+$dark-bg4: #00bfff;
+
+//Blue Shades
+$dark-blue0: #151538;
+$dark-blue1: #2c2e6e;
+$dark-blue2: #3b41bf;
+$dark-blue3: #2563eb;
+
+// Dark Theme Links
+$dark-link: #00bfff;
+$dark-link-hover: lighten($dark-link, 15%);
+
+// Shadow Colors
+$dark-sh1: rgba(0, 0, 0, 0.5);
+$dark-sh-soft: rgba(0, 0, 0, 0.3); // For small components (inputs, tags)
+$dark-sh-deep: rgba(0, 0, 0, 0.8); // For floating elements (modals, dropdowns)
+$dark-sh-accent: rgba(0, 191, 255, 0.15); // A "glow" shadow using your $dark-bg4 blue
+
+// Text Colors
+$dark-text0: #ffffff;
+$dark-text1: #a9a9b3;
+$dark-text2: #010104;
+$dark-text3: #f2eafd;
+$dark-text4: #83808c;
+$dark-text5: #b0b0b0;
+$dark-text6: #00bfff;
+$dark-text7: #512BD4;
+$dark-text8: #1e293b;
+$dark-text9: #64748b;
+
+
+// Light Theme Accent
+$light-accent0: #00bfff;
+$light-accent-hover: darken($light-accent0, 10%); // Darken slightly for better contrast on white
+$light-accent-soft: rgba($light-accent0, 0.1); // For subtle backgrounds/ghost buttons
+ 
+// Border Colors
+$light-bd0: #333;
+$light-bd1: #e2e8f0; // Subtle borders for cards on $light-bg1
+$light-bd2: #cbd5e1; // Visible separators
+
+// Background Colors
+$light-bg0: #fdfdfe; // Pure Base
+$light-bg1: #f5f5f6; // Secondary Section
+$light-bg2: #ececed; // Card Surface (Contrasts with bg0)
+$light-bg3: #e2e2e4; // Hover/Active States
+$light-bg4: #0099cc; // Muted Blue Accent (Contrast-safe version of your dark-bg4)
+
+
+//Gray Shades
+$light-gray0: #a9a9a9;
+$light-gray1: #cccdcd;
+$light-gray2: #e2e3e3;
+$light-gray3: #f8fafc;
+
+// Light Mode Shadows
+$light-sh1: rgba(0, 0, 0, 0.08); // Standard soft shadow
+$light-sh-ambient: rgba(55, 101, 156, 0.05); // Tiny hint of your blue ($light-text0)
+$light-sh-deep: rgba(0, 0, 0, 0.15); // For floating modals/dropdowns
+$light-sh-accent: rgba(0, 191, 255, 0.2); // Soft neon glow for light mode
+
+// Text Colors
+$light-text0: #37659c; // Primary Headings (Strong Blue)
+$light-text1: #a9a9a9; // Secondary / Muted
+$light-text2: #cccdcd; // Disabled / Placeholder
+$light-text3: #b7becc; // Structural Labels
+$light-text4: #333; // High Contrast Text
+
+// Light Theme Links (Contrasting Blue)
+$light-link: #37659c; // Matches your $light-text0 for consistency
+$light-link-hover: darken($light-link, 10%);
+
+
+
+//MISCELLANEOUS COLORS
+// State Colors
+$color-success: #00ff88; // Neon green (contrasts with your blue)
+$color-error: #ff4b2b; // Warm red
+$color-warning: #ffca28; // Bright gold
+
+
+
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;
+$extra-large-desktop: 1400px;

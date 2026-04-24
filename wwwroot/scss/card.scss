@@ -1,75 +1,208 @@
-﻿@use 'mixins' as *; // Dart Sass automatically looks for _mixins.scss
+﻿@import 'variables'; // Dart Sass automatically looks for _mixins.scss
+@import 'mixins';
 
-$dark-link: #00bfff;
-$dark-bg0: #1a1a1a;
-$dark-bg1: #333;
-$dark_bg2: #00bfff; 
+.debtor-card {
+    @include glass-card($light-bg0, $light-bd0, $light-accent0);
+    min-width: 300px;
+    gap: 1.5rem; // Space between flex sections
 
-$dark-bd0: #333;
+    @include dark-mode {
+        @include glass-card($dark-bg0, $dark-bd0, $dark-accent0);
+    }
 
-$dark-txt0: #fff;
-$dark-txt1: #00bfff;
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
 
+        h3 {
+            color: $dark-text1;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
 
-@mixin flex-col ($align: center, $justify: space-between) {
-    display: flex;
-    align-items: $align;
-    justify-content: $justify;
-    flex-direction: column;
-}
+            @include dark-mode {
+                color: $light-text1;
+            }
+        }
 
-@mixin flex-row ($align: center, $justify: space-between) {
-    display: flex;
-    align-items: $align;
-    justify-content: $justify;
-    flex-direction: row;
+        .icon-box {
+            background: rgba($light-bg4, 0.1);
+            border-radius: 10px;
+            color: $light-text4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+
+            @include dark-mode {
+                background: rgba($dark-bg4, 0.1);
+                color: $dark-text4;
+            }
+
+            img, svg {
+                transition: filter 0.3s ease;
+            }
+
+            @include dark-mode {
+                img, svg {
+                    filter: brightness(0.8) contrast(1.2);
+                }
+            }
+        }
+
+        &__main {
+            text-align: center;
+
+            .amount {
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: $light-text0; // Strong Blue in light mode
+                display: block;
+
+                @include dark-mode {
+                    color: $dark-accent0; // Bright Cyan in dark mode
+                }
+            }
+        }
+
+        &__stats {
+            width: 100%;
+            padding-top: 1rem;
+            border-top: 1px solid $light-bd0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            @include dark-mode {
+                border-top: 1px solid $dark-bd0;
+            }
+
+            .rate {
+                font-weight: 600;
+                font-size: 0.9rem;
+
+                &--increase {
+                    color: $color-error;
+                }
+
+                &--average {
+                    color: $color-warning;
+                }
+
+                &--decrease {
+                    color: $color-success;
+                }
+            }
+
+            .label {
+                color: $light-text1;
+                font-size: 0.8rem;
+
+                @include dark-mode {
+                    color: $dark-text1;
+                }
+            }
+        }
+    }
 }
 
 /* Container styling */
 .form-card {
-    background: #ffffff;
-    padding: 2rem;
+    @include glass-card($light-bg0, $light-bd0, $light-accent0);
+    background: $light-bg0;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    max-width: 800px;
-    margin: 20px auto;
-}
+    box-shadow: 0 10px 25px $light-sh1;
+    margin: 40px auto;
+    max-width: 90%;
+    padding: 2rem;
 
-.card {
-    @include flex-col(center, flex-start);
-    border-radius: 20px;
-    padding: 5px;
+    @include dark-mode {
+        // DARK MODE
+        @include glass-card($dark-bg0, $dark-bd0, $dark-accent0);
+        background: $dark-bg0;
+        box-shadow: 0 10px 25px $dark-sh1;
+    }
 
     .card-header {
-        @include flex-row(center, flex-start);
-        border-radius: 15px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 1rem;
+
+        .btn-tab {
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: $light-text1;
+            opacity: 0.6;
+            padding: 10px 20px;
+            position: relative;
+            transition: all 0.3s ease;
+
+            @include dark-mode {
+                color: $dark-text1;
+            }
+
+            &:nth-child(odd) {
+                border-radius: 10px 30px 10px 10px;
+            }
+
+            &:nth-child(even) {
+                border-radius: 10px 10px 10px 30px;
+            }
+
+            &.active {
+                color: $light-text0; // Strong Blue
+                opacity: 1;
+                // Underline indicator for the active tab
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -1rem;
+                    left: 0;
+                    width: 100%;
+                    height: 3px;
+                    background: $light-accent0;
+                    border-radius: 3px 3px 0 0;
+                }
+
+                @include dark-mode {
+                    color: $dark-text0; // Pure White
+
+                    &::after {
+                        background: $dark-accent0;
+                    }
+                }
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
     }
 
     .card-body {
-        @include flex-row(center, flex-start);
-        font-size: 1rem;
-        color: #333;
+        background: $light-bg1; // Light mode remains #f5f5f6
+        border-color: $light-bd0;
+        box-shadow: 0 0 0 3px rgba($light-accent0, 0.2);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; // Space between input groups
+        animation: fadeIn 0.4s ease-out;
 
-        .card-col {
-            @include flex-col(center, flex-start);
-            margin-bottom: 5px;
+        @include dark-mode {
+            background: $dark-bg2; // Use the much darker #1a1a1a
+            border-color: $dark-bd0;
+            box-shadow: 0 0 0 3px rgba($dark-accent0, 0.2);
         }
-
-        .card-row {
-            @include flex-row(center, flex-start);
-            margin-bottom: 5px;
-        }
-    }
-
-    .card-footer {
-        @include flex-row(center, flex-start);
-        font-size: 1rem;
-        color: #333;
     }
 }
+
 
 .container {
     display: flex;
@@ -78,21 +211,18 @@ $dark-txt1: #00bfff;
 }
 
 
-
-
-
 .flex {
-    display: flex;
-    width: 100%;
+     display: flex;
+     width: 100%;
     gap: 6px;
 }
 
-/* Form Styling */
+    /* Form Styling */
 .form {
-    background-color: $dark-bg0;
-    border: 1px solid $dark-bd0;
+    background-color: transparent;
+    border: 1px solid $light-bd0;
     border-radius: 20px;
-    color: $dark-txt0;
+    color: $light-text1;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -100,18 +230,34 @@ $dark-txt1: #00bfff;
     padding: 20px;
     position: relative;
 
+    @include dark-mode {
+        background-color: transparent;
+        border: 1px solid $dark-bd0;
+        color: $dark-text1;
+    }
+
     label {
+        color: $light-text0;
         position: relative;
         width: 100%;
 
+        @include dark-mode {
+            color: $dark-text0;
+        }
+
         .input {
-            background-color: $dark-bg1;
+            background-color: $light-bg1;
             border: 1px solid rgba(105, 105, 105, 0.397);
             border-radius: 10px;
-            color: $dark-txt0;
+            color: $light-text4; // High contrast #333
             outline: 0;
             padding: 20px 05px 05px 10px;
             width: 100%;
+
+            @include dark-mode {
+                background-color: $dark-bg1;
+                color: $dark-text0; // White
+            }
 
             &:placeholder-shown + span {
                 top: 12.5px;
@@ -119,21 +265,29 @@ $dark-txt1: #00bfff;
             }
 
             &:focus + span, &:valid + span {
-                color: #00bfff;
+                color: $light-text0; // Your Primary Strong Blue
                 top: 0px;
                 font-size: 0.7em;
                 font-weight: 600;
+
+                @include dark-mode {
+                    color: $dark-accent0; // Bright Cyan
+                }
             }
         }
 
             .input + span {
-                color: rgba(255, 255, 255, 0.5);
+                color: $light-text1; // Muted Gray
                 cursor: text;
                 font-size: 0.9em;
                 left: 10px;
                 position: absolute;
                 top: 0px;
                 transition: 0.3s ease;
+
+                @include dark-mode {
+                    color: $dark-text1; // Muted Lavender
+                }
             }
     }
 
@@ -142,48 +296,68 @@ $dark-txt1: #00bfff;
     }
 }
 
-.title {
-    color: $dark-txt1;
-    display: flex;
-    align-items: center;
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    justify-content: center;
-    position: relative;
-    padding-left: 30px;
+    .title {
+        color: $light-text1;
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -1px;
+        justify-content: center;
+        position: relative;
+        padding-left: 30px;
 
-    &::before {
-        aspect-ratio: 1 / 1;
-        width: 18px;
-    }
+        @include dark-mode {
+            color: $dark-text1;
+        }
 
-    &::after {
-        animation: pulse 1s linear infinite;
-        aspect-ratio: 1 / 1;
-        width: 18px;
-    }
+        &::before {
+            aspect-ratio: 1 / 1;
+            width: 18px;
+        }
 
-    &::before,
-    &::after {
-        position: absolute;
-        content: "";
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        left: 0px;
-        background-color: #00bfff;
+        &::after {
+            animation: pulse 1s linear infinite;
+            aspect-ratio: 1 / 1;
+            width: 18px;
+        }
+
+        &::before,
+        &::after {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            left: 0px;
+            background-color: $light-accent0;
+
+            @include dark-mode {
+                background-color: $light-accent0;
+            }
+        }
     }
-}
 
 .signin {
     text-align: center;
 
     a {
-        color: #00bfff;
+        // Use your Accent Colors
+        color: $light-accent0;
+        font-weight: 600;
+
+        @include dark-mode {
+            color: $dark-accent0;
+        }
 
         &:hover {
-            text-decoration: underline royalblue;
+            color: $light-accent-hover;
+            text-decoration: underline $light-accent0;
+
+            @include dark-mode {
+                color: $dark-accent-hover;
+                text-decoration: underline $dark-accent0;
+            }
         }
     }
 }
@@ -191,32 +365,53 @@ $dark-txt1: #00bfff;
 .message,
 .signin {
     font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.7);
+    color: $light-text1;
+
+    @include dark-mode {
+        color: $dark-text1;
+    }
 }
 
 .submit {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
     border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    transition: transform 0.3s ease;
-    background-color: #00bfff;
+    background: $light-accent0;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s;
+
+    @include dark-mode {
+        background: $dark-accent0;
+        color: $dark-bg0; // Dark text on bright cyan button for readability
+    }
 
     &:hover {
-        background-color: #00bfff96;
-    }
-}    
+        box-shadow: 0 4px 12px $light-sh-accent;
+        filter: brightness(1.1);
+        transform: translateY(-1px);
 
-@keyframes pulse {
-    from {
-        transform: scale(0.9);
-        opacity: 1;
+        @include dark-mode {
+            box-shadow: 0 4px 15px $dark-sh-accent;
+        }
     }
 
-    to {
-        transform: scale(1.8);
-        opacity: 0;
+    &:active {
+        transform: translateY(0);
     }
 }
+
+
+    @keyframes pulse {
+        from {
+            transform: scale(0.9);
+            opacity: 1;
+        }
+
+        to {
+            transform: scale(1.8);
+            opacity: 0;
+        }
+    }
